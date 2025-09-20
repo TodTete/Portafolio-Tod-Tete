@@ -4,14 +4,34 @@ import { Badge } from '@/components/ui/badge';
 
 const certificates = [
   {
-    id: 1,
-    title: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    image: "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+    id: 7,
+    title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
+    issuer: "Oracle",
+    date: "2025",
+    image: "https://media.licdn.com/dms/image/v2/D5622AQEVFZe5DGLpRQ/feedshare-shrink_1280/B56ZfPkcRvGoAo-/0/1751534126714?e=2147483647&v=beta&t=B0ZQuRvSpEAjcLOuVd-Or0_5eaOk5fOxU2BEkXDfwkA",
     category: "Cloud",
     verified: true,
-    url: "#"
+    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=3396EC9997AF72C54D09539D1B841C26A1FDC70B9E61B075344430ACA5D014EA"
+  },
+  {
+    id: 8,
+    title: "Oracle Cloud Infrastructure 2025 Certified Developer Professional",
+    issuer: "Oracle",
+    date: "2025",
+    image: "https://media.licdn.com/dms/image/sync/v2/D5627AQGF78cDhSVd9Q/articleshare-shrink_1280_800/B56ZXPhZzxGcAU-/0/1742943395701?e=2147483647&v=beta&t=mD1EYVqmkwMrPAJxwCj2VlRaFHZrEwANm9rdnz9pQzw",
+    category: "Cloud",
+    verified: true,
+    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=C3DF7C138B1ED36400F3DA04FDAC3FD866862A5DD237680BE03D29DF62500F06"
+  },
+  {
+    id: 3,
+    title: "IBM DevOps and Software Engineering",
+    issuer: "IBM",
+    date: "2024",
+    image: "https://images.credly.com/images/d9fe3b97-3f2f-4b1d-a295-16c92ae855bc/image.png",
+    category: "DevOps",
+    verified: true,
+    url: "https://coursera.org/share/507f030255a2c6571e09d0bba500268b"
   },
   {
     id: 2,
@@ -24,24 +44,14 @@ const certificates = [
     url: "#"
   },
   {
-    id: 3,
-    title: "IBM DevOps and Software Engineering",
-    issuer: "IBM",
-    date: "2024",
-    image: "https://images.credly.com/images/d9fe3b97-3f2f-4b1d-a295-16c92ae855bc/image.png",
-    category: "DevOps",
-    verified: true,
-    url: "#"
-  },
-  {
     id: 4,
-    title: "IBM Full Stack Software Developer",
+    title: "IBM Back-End Development",
     issuer: "IBM",
     date: "2024",
     image: "https://images.credly.com/images/ff8f2956-43b1-47d1-abba-1db32724b24b/image.png",
-    category: "Full-Stack",
+    category: "Back-End",
     verified: true,
-    url: "#"
+    url: "https://coursera.org/share/f8ddb6a548f16655f24a751ea132f32c"
   },
   {
     id: 5,
@@ -51,7 +61,7 @@ const certificates = [
     image: "https://images.credly.com/images/7c355969-da4a-47e5-8155-c4edd0146bba/image.png",
     category: "Soporte TI",
     verified: true,
-    url: "#"
+    url: "https://coursera.org/share/b22c2b473cd0f1c3444646a6e1f530f3"
   },
   {
     id: 6,
@@ -61,7 +71,17 @@ const certificates = [
     image: "https://fsvc.capacitateparaelempleo.org/CapacitateFS/DiplomasImages/b5866d01-ded6-46f0-be13-98801bdc4a4b.png", 
     category: "Web & Mobile",
     verified: true,
-    url: "#"
+    url: "https://capacitateparaelempleo.org/verifica/dcc74fb0-f165-4b30-95a8-4a8a042eb4f1/aab766b7-add9-4e79-902f-5f3baefc95ff"
+  },
+  {
+    id: 9,
+    title: "Técnico en Big Data",
+    issuer: "Fundación Carlos Slim",
+    date: "2024",
+    image: "https://capacitateparaelempleo.org/assets/DiplomasImages/cfbec728-8abb-4cc3-8d2c-e782b1862082.png",
+    category: "Big Data",
+    verified: true,
+    url: "https://capacitateparaelempleo.org/verifica/dcc74fb0-f165-4b30-95a8-4a8a042eb4f1/7cd760e8-6448-4ea5-8f6e-1abe407764ff"
   }
 ];
 
@@ -73,6 +93,7 @@ const CertificateCard = ({ certificate, index }: { certificate: any; index: numb
       <Card
         className={`group bg-card/80 backdrop-blur-sm border-border/50 hover:shadow-glow transition-all duration-300 hover-effect animate-float animate-slide-up-delay-${index % 3 + 1} cursor-pointer`}
         style={{ animationDelay: `${index * 0.2}s` }}
+        onClick={() => window.open(certificate.url, "_blank")}
       >
         <CardContent className="p-6">
           <div className="flex items-start justify-between mb-4">
@@ -80,7 +101,7 @@ const CertificateCard = ({ certificate, index }: { certificate: any; index: numb
               <img
                 src={certificate.image}
                 alt={certificate.title}
-                className="w-10 h-10 rounded-md object-contain"
+                className="w-16 h-16 rounded-md object-contain"
               />
               <div className="flex-1">
                 <h3 className="font-semibold text-lg group-hover:gradient-text transition-all duration-300">
