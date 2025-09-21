@@ -40,3 +40,34 @@
 .read-the-docs {
   color: #888;
 }
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient-move {
+  animation: gradient-move 6s ease infinite;
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-border {
+  animation: borderMove 6s linear infinite;
+  border-radius: 1rem; /* coincide con rounded-2xl */
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-border {
+  animation: borderMove 6s linear infinite;
+  border-radius: 1rem; /* coincide con rounded-2xl */
+}

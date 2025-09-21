@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import { ScrollAnimationWrapper } from '../ScrollAnimationWrapper';
 import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
-import { Mail, Linkedin, Github } from 'lucide-react';
+import { Mail, Linkedin, Github, Copy } from 'lucide-react';
 
 const contactMethods = [
   {
@@ -14,115 +10,120 @@ const contactMethods = [
     title: "Email",
     value: "vallejoricardo3@gmail.com",
     action: () => window.open('mailto:vallejoricardo3@gmail.com'),
-    color: "bg-blue-500/20 text-blue-400"
+    color: "bg-blue-500/20 text-blue-400",
+    copy: "vallejoricardo3@gmail.com"
   },
   {
     icon: <Linkedin className="w-6 h-6" />,
     title: "LinkedIn",
     value: "/in/ricardo-vallejo-sanchez-8034a9199",
     action: () => window.open('https://www.linkedin.com/in/ricardo-vallejo-sanchez-8034a9199', '_blank'),
-    color: "bg-blue-600/20 text-blue-500"
+    color: "bg-blue-600/20 text-blue-500",
+    copy: "https://www.linkedin.com/in/ricardo-vallejo-sanchez-8034a9199"
   },
   {
     icon: <Github className="w-6 h-6" />,
     title: "GitHub",
     value: "/TodTete",
     action: () => window.open('https://github.com/TodTete', '_blank'),
-    color: "bg-gray-600/20 text-gray-400"
+    color: "bg-gray-600/20 text-gray-400",
+    copy: "https://github.com/TodTete"
   }
 ];
 
 export const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    toast.success('¡Mensaje enviado! Te responderé pronto.', {
-      description: 'Gracias por contactarme. Revisaré tu mensaje y te responderé a la brevedad.',
-    });
-
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(text);
+      toast.success("Copiado al portapapeles", {
+        description: text,
+      });
+      setTimeout(() => setCopied(null), 2000);
+    } catch {
+      toast.error("No se pudo copiar");
+    }
   };
 
   return (
-    <section id="contacto" className="py-20 bg-background">
+    <section id="contacto" className="py-20 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden">
+      {/* Fondo decorativo */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-10 -left-10 w-72 h-72 bg-primary/10 blur-3xl rounded-full" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/10 blur-3xl rounded-full" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollAnimationWrapper animation="fade-in-up">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 relative inline-block">
               <span className="gradient-text">Hablemos</span>
+              <span className="block h-[3px] w-16 bg-gradient-to-r from-primary via-accent to-primary rounded-full mx-auto mt-3" />
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              ¿Tienes un proyecto en mente? Estoy disponible para colaborar en ideas increíbles
+              ¿Tienes un proyecto en mente? Estoy disponible para colaborar en ideas increíbles.
             </p>
           </div>
         </ScrollAnimationWrapper>
 
-        <div className="max-w-7xl mx-auto">
-          <ScrollAnimationWrapper animation="slide-in-left">
-            <div className="space-y-12">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-6 gradient-text">Información de Contacto</h3>
-                <p className="text-muted-foreground mb-8 leading-relaxed max-w-3xl mx-auto">
-                  Estoy siempre abierto a discutir oportunidades de trabajo, 
-                  proyectos interesantes o simplemente charlar sobre tecnología. 
-                  No dudes en contactarme a través de cualquiera de estos medios.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {contactMethods.map((method, index) => (
-                  <ScrollAnimationWrapper
-                    key={method.title}
-                    animation="bounce-in"
-                    threshold={0.3}
+        <div className="space-y-12">
+          {/* Tarjetas de contacto con borde animado */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {contactMethods.map((method, index) => (
+              <ScrollAnimationWrapper key={method.title} animation="bounce-in" threshold={0.3}>
+                <div className="relative group">
+                  {/* Borde animado */}
+                  <div className="absolute -inset-[2px] rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 animate-border bg-[length:300%_300%] bg-gradient-to-r from-pink-500 via-purple-500 via-blue-500 via-green-500 via-yellow-500 to-pink-500" />
+                  
+                  <Card
+                    className="relative bg-card/70 backdrop-blur-sm border border-border/60 rounded-2xl cursor-pointer"
+                    onClick={method.action}
+                    style={{ animationDelay: `${index * 0.15}s` }}
                   >
-                    <Card
-                      className="bg-card/50 backdrop-blur-sm border-border/50 hover:shadow-glow transition-all duration-300 hover:scale-105 cursor-pointer group animate-float hover-effect"
-                      onClick={method.action}
-                      style={{ animationDelay: `${index * 0.2}s` }}
-                    >
-                      <CardContent className="p-6 text-center">
-                        <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${method.color} mb-4 group-hover:scale-110 transition-transform duration-300 animate-pulse-glow`}>
-                          {method.icon}
-                        </div>
-                        <h4 className="font-semibold mb-2 text-lg">{method.title}</h4>
-                        <p className="text-sm text-muted-foreground">{method.value}</p>
-                      </CardContent>
-                    </Card>
-                  </ScrollAnimationWrapper>
-                ))}
-              </div>
-
-              <ScrollAnimationWrapper animation="fade-in-up" threshold={0.3}>
-                <div className="bg-gradient-primary/10 rounded-lg p-8 border border-primary/20 text-center max-w-4xl mx-auto hover-effect animate-pulse-glow">
-                  <h4 className="font-semibold mb-4 gradient-text text-xl">¿Trabajamos juntos?</h4>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Estoy disponible para proyectos freelance, consultorías y 
-                    oportunidades de trabajo remoto o presencial.
-                  </p>
-                  <div className="flex items-center justify-center space-x-3">
-                    <span className="w-3 h-3 bg-primary rounded-full animate-pulse"></span>
-                    <span className="text-primary font-medium text-lg">Disponible para nuevos proyectos</span>
-                  </div>
+                    <CardContent className="p-6 text-center">
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full ${method.color} mb-4`}>
+                        {method.icon}
+                      </div>
+                      <h4 className="font-semibold mb-1">{method.title}</h4>
+                      <p className="text-sm text-muted-foreground">{method.value}</p>
+                      {method.copy && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            copyToClipboard(method.copy!);
+                          }}
+                          className="mt-3 text-xs text-primary hover:underline flex items-center justify-center gap-1 mx-auto"
+                        >
+                          <Copy className="w-3 h-3" />
+                          {copied === method.copy ? "Copiado" : "Copiar"}
+                        </button>
+                      )}
+                    </CardContent>
+                  </Card>
                 </div>
               </ScrollAnimationWrapper>
+            ))}
+          </div>
+
+          {/* Banner disponibilidad */}
+          <ScrollAnimationWrapper animation="fade-in-up" threshold={0.3}>
+            <div className="relative max-w-3xl mx-auto">
+              <div className="absolute -inset-[2px] rounded-2xl animate-border bg-[length:400%_400%] bg-gradient-to-r from-pink-500 via-purple-500 via-blue-500 via-green-500 via-yellow-500 to-pink-500 opacity-70" />
+              <div className="relative bg-background/70 border border-primary/20 rounded-2xl p-8 text-center backdrop-blur-sm">
+                <h4 className="font-semibold text-xl mb-2 gradient-text">¿Trabajamos juntos?</h4>
+                <p className="text-muted-foreground mb-4">
+                  Disponible para proyectos freelance, consultorías y oportunidades remotas o presenciales.
+                </p>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30">
+                  <span className="w-2.5 h-2.5 bg-primary rounded-full animate-pulse" />
+                  <span className="text-sm text-primary font-medium">
+                    Disponible para nuevos proyectos
+                  </span>
+                </div>
+              </div>
             </div>
           </ScrollAnimationWrapper>
         </div>
