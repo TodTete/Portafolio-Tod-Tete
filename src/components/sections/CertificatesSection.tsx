@@ -13,7 +13,10 @@ type Cert = {
   category: string;
   verified: boolean;
   url: string;
-  highlight?: boolean; // para resaltar (Oracle)
+  highlight?: boolean;
+
+  download?: boolean;    
+  filename?: string;     
 };
 
 const certificates: Cert[] = [
@@ -111,6 +114,19 @@ const certificates: Cert[] = [
     url:
       "https://capacitateparaelempleo.org/verifica/dcc74fb0-f165-4b30-95a8-4a8a042eb4f1/7cd760e8-6448-4ea5-8f6e-1abe407764ff",
   },
+
+  {
+    id: 10,
+    title: "HCIA Cloud Services",
+    issuer: "Huawei Academy",
+    date: "2023",
+    image: "https://infosyte.com/wp-content/uploads/2021/05/HCIA-Cloud-Service.jpg", 
+    category: "Cloud",
+    verified: true,
+    url: "HCIA-Cloud-Services.png",     
+    download: true,                         
+    filename: "/HCIA-Cloud-Services.png",     
+  },
 ];
 
 const CertificateCard = ({
@@ -123,7 +139,20 @@ const CertificateCard = ({
   const animationType =
     index % 3 === 0 ? 'slide-in-left' : index % 3 === 1 ? 'fade-in-up' : 'slide-in-right';
 
-  const open = () => window.open(certificate.url, '_blank');
+  const open = () => {
+    if (certificate.download) {
+      // Descarga directa del archivo en /public
+      const link = document.createElement('a');
+      link.href = encodeURI(certificate.url);
+      link.setAttribute('download', certificate.filename || `${certificate.title.replace(/\s+/g, '_')}.png`);
+      link.rel = 'noopener';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(certificate.url, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <ScrollAnimationWrapper animation={animationType} threshold={0.2}>
@@ -179,7 +208,7 @@ const CertificateCard = ({
               </span>
             </div>
 
-            {/* Botón Verificar (hover en desktop, fijo en móvil) */}
+            {/* Botón acción: Verificar o Descargar */}
             <div className="mt-4">
               <button
                 onClick={(e) => {
@@ -187,10 +216,10 @@ const CertificateCard = ({
                   open();
                 }}
                 className="md:opacity-0 md:group-hover:opacity-100 transition inline-flex items-center gap-2 text-xs px-3 py-1.5 rounded-full bg-primary/90 text-primary-foreground"
-                aria-label={`Verificar ${certificate.title}`}
+                aria-label={`${certificate.download ? 'Descargar' : 'Verificar'} ${certificate.title}`}
               >
                 <ExternalLink className="w-3.5 h-3.5" />
-                Verificar
+                {certificate.download ? 'Descargar' : 'Verificar'}
               </button>
             </div>
           </CardContent>
