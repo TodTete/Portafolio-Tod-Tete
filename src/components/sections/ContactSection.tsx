@@ -16,10 +16,10 @@ const contactMethods = [
   {
     icon: <Linkedin className="w-6 h-6" />,
     title: "LinkedIn",
-    value: "/in/ricardo-vallejo-sanchez-8034a9199",
-    action: () => window.open('https://www.linkedin.com/in/ricardo-vallejo-sanchez-8034a9199', '_blank'),
+    value: "/in/ricardovallejotodtete",
+    action: () => window.open('https://www.linkedin.com/in/ricardovallejotodtete', '_blank'),
     color: "bg-blue-600/20 text-blue-500",
-    copy: "https://www.linkedin.com/in/ricardo-vallejo-sanchez-8034a9199"
+    copy: "https://www.linkedin.com/in/ricardovallejotodtete"
   },
   {
     icon: <Github className="w-6 h-6" />,

@@ -21,12 +21,46 @@ type Cert = {
 
 const certificates: Cert[] = [
   {
+    id: 11,
+    title: "Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate",
+    issuer: "Oracle",
+    date: "2025",
+    image: "https://education.oracle.com/file/general/Oracle_Foundations_Associate_Badge.png",
+    category: "AI",
+    verified: true,
+    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=57614CE39CADC0E88BEDD8C4521398D628649C0CD5EB99305690CEB59565CC20",
+    highlight: true,
+  },
+  {
+    id: 12,
+    title: "Oracle Cloud Infrastructure 2025 Certified DevOps Professional",
+    issuer: "Oracle",
+    date: "2025",
+    image: "https://education.oracle.com/file/general/Oracle_Professional_Badge_final.png",
+    category: "DevOps",
+    verified: true,
+    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=3B5BDD511340F72D2DFB3D47924E88EA6CE1C0CECFDAB2A179AF2C0C82013903",
+    highlight: true,
+  },
+  {
+    id: 13,
+    title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
+    issuer: "Oracle",
+    date: "2025",
+    image: "https://education.oracle.com/file/general/Oracle_Foundations_Associate_Badge.png",
+    category: "Cloud",
+    verified: true,
+    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=3396EC9997AF72C54D09539D1B841C26A1FDC70B9E61B075344430ACA5D014EA",
+    highlight: true,
+  },
+
+  {
     id: 7,
     title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
     issuer: "Oracle",
     date: "2025",
     image:
-      "https://media.licdn.com/dms/image/v2/D5622AQEVFZe5DGLpRQ/feedshare-shrink_1280/B56ZfPkcRvGoAo-/0/1751534126714?e=2147483647&v=beta&t=B0ZQuRvSpEAjcLOuVd-Or0_5eaOk5fOxU2BEkXDfwkA",
+      "https://education.oracle.com/file/general/Oracle_Foundations_Associate_Badge.png",
     category: "Cloud",
     verified: true,
     url:
@@ -114,20 +148,20 @@ const certificates: Cert[] = [
     url:
       "https://capacitateparaelempleo.org/verifica/dcc74fb0-f165-4b30-95a8-4a8a042eb4f1/7cd760e8-6448-4ea5-8f6e-1abe407764ff",
   },
-
   {
     id: 10,
     title: "HCIA Cloud Services",
     issuer: "Huawei Academy",
     date: "2023",
-    image: "https://infosyte.com/wp-content/uploads/2021/05/HCIA-Cloud-Service.jpg", 
+    image: "https://infosyte.com/wp-content/uploads/2021/05/HCIA-Cloud-Service.jpg",
     category: "Cloud",
     verified: true,
-    url: "HCIA-Cloud-Services.png",     
-    download: true,                         
-    filename: "/HCIA-Cloud-Services.png",     
+    url: "HCIA-Cloud-Services.png",
+    download: true,
+    filename: "/HCIA-Cloud-Services.png",
   },
 ];
+
 
 const CertificateCard = ({
   certificate,

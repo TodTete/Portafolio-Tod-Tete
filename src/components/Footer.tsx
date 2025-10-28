@@ -6,7 +6,7 @@ export const Footer = () => {
 
   const socialLinks = [
     { name: 'GitHub', icon: <Github className="w-5 h-5" />, url: 'https://github.com/TodTete' },
-    { name: 'LinkedIn', icon: <Linkedin className="w-5 h-5" />, url: 'https://www.linkedin.com/in/ricardo-vallejo-sanchez-8034a9199' },
+    { name: 'LinkedIn', icon: <Linkedin className="w-5 h-5" />, url: 'https://www.linkedin.com/in/ricardovallejotodtete' },
     { name: 'Email', icon: <Mail className="w-5 h-5" />, url: 'mailto:vallejoricardo3@gmail.com' }
   ];
 
