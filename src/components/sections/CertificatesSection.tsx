@@ -77,7 +77,7 @@ const certificates: Cert[] = [
     category: "Cloud",
     verified: true,
     url:
-      "https://catalog-education.oracle.com/pls/certview/sharebadge?id=C3DF7C138B1ED36400F3DA04FDAC3FD866862A5DD237680BE03D29DF62500F06",
+      "https://catalog-education.oracle.com/ords/certview/sharebadge?id=C3DF7C138B1ED36400F3DA04FDAC3FD866862A5DD237680BE03D29DF62500F06",
     highlight: true,
   },
   {
