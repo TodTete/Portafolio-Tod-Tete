@@ -28,7 +28,7 @@ const certificates: Cert[] = [
     image: "https://education.oracle.com/file/general/Oracle_Foundations_Associate_Badge.png",
     category: "AI",
     verified: true,
-    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=57614CE39CADC0E88BEDD8C4521398D628649C0CD5EB99305690CEB59565CC20",
+    url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=57614CE39CADC0E88BEDD8C4521398D628649C0CD5EB99305690CEB59565CC20",
     highlight: true,
   },
   {
