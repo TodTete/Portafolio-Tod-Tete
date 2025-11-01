@@ -39,7 +39,7 @@ const certificates: Cert[] = [
     image: "https://education.oracle.com/file/general/Oracle_Professional_Badge_final.png",
     category: "DevOps",
     verified: true,
-    url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=3B5BDD511340F72D2DFB3D47924E88EA6CE1C0CECFDAB2A179AF2C0C82013903",
+    url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=3B5BDD511340F72D2DFB3D47924E88EA6CE1C0CECFDAB2A179AF2C0C82013903",
     highlight: true,
   },
   {
