@@ -15,8 +15,8 @@ type Cert = {
   url: string;
   highlight?: boolean;
 
-  download?: boolean;    
-  filename?: string;     
+  download?: boolean;
+  filename?: string;
 };
 
 const certificates: Cert[] = [
@@ -53,7 +53,39 @@ const certificates: Cert[] = [
     url: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=3396EC9997AF72C54D09539D1B841C26A1FDC70B9E61B075344430ACA5D014EA",
     highlight: true,
   },
-
+  {
+    id: 14,
+    title: "Microsoft Certified: Azure Developer Associate",
+    issuer: "Microsoft",
+    date: "2026",
+    image: "https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-associate-badge.svg?branch=main",
+    category: "Cloud",
+    verified: true,
+    url: "https://learn.microsoft.com/api/credentials/share/es-es/RicardoVallejoSanchez-9356/E24128B5A926EB29?sharingId=444D942F6629E34A",
+    highlight: true,
+  },
+  {
+    id: 15,
+    title: "Oracle Certified Professional: Java SE 17 Developer",
+    issuer: "Oracle",
+    date: "2025",
+    image: "https://brm-workforce.oracle.com/pdf/certview/images/OCPJSE17.png",
+    category: "Back-End",
+    verified: true,
+    url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=0EA0924E0772829629E55C72447F1B4415904965AC94E8BB8E9C2519D754F450",
+    highlight: true,
+  },
+  {
+    id: 16,
+    title: "Oracle Cloud Infrastructure 2025 Certified Architect Associate",
+    issuer: "Oracle",
+    date: "2025",
+    image: "https://brm-workforce.oracle.com/pdf/certview/images/OCI25CAA.png",
+    category: "Cloud",
+    verified: true,
+    url: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=9B70467C52CC916AA58C732BF644B7CDC4EB07E642BD69C378CDB53A9A153028",
+    highlight: true,
+  },
   {
     id: 7,
     title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
@@ -153,7 +185,7 @@ const certificates: Cert[] = [
     title: "HCIA Cloud Services",
     issuer: "Huawei Academy",
     date: "2023",
-    image: "https://infosyte.com/wp-content/uploads/2021/05/HCIA-Cloud-Service.jpg",
+    image: "https://infosyte.com/wp-content/uploads/2021/05/HCIA-Cloud-Service-1024x1024.jpg",
     category: "Cloud",
     verified: true,
     url: "HCIA-Cloud-Services.png",
@@ -215,7 +247,10 @@ const CertificateCard = ({
                   src={certificate.image}
                   alt={certificate.title}
                   loading="lazy"
-                  className="w-18 h-18 min-w-16 min-h-16 w-16 h-16 rounded-md object-contain"
+                  className={`w-16 h-16 rounded-md ${certificate.id === 15 || certificate.id === 16
+                      ? "object-cover"
+                      : "object-contain"
+                    }`}
                 />
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-base md:text-lg group-hover:gradient-text transition-all duration-300 line-clamp-2">
