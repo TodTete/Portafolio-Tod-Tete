@@ -185,7 +185,7 @@ const certificates: Cert[] = [
     title: "HCIA Cloud Services",
     issuer: "Huawei Academy",
     date: "2023",
-    image: "https://infosyte.com/wp-content/uploads/2021/05/HCIA-Cloud-Service-1024x1024.jpg",
+    image: "https://img-c.udemycdn.com/course/480x270/6669109_0074.jpg?w=640&q=75",
     category: "Cloud",
     verified: true,
     url: "HCIA-Cloud-Services.png",
