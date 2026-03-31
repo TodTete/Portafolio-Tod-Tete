@@ -68,6 +68,16 @@ const projects = [
     githubUrl: "https://github.com/TodTete/Salud-Python",
     demoUrl: "https://youtu.be/4y8nAh_SkRM",
   },
+  {
+    id: 5,
+    title: "Spaces Astro",
+    description:
+      "Arcade 2D desarrollado en Python con Pygame. Incluye jefes progresivos, power-ups, cámara dinámica, fondos animados y sistema de niveles optimizado.",
+    technologies: ["Python", "Pygame", "Game Dev"],
+    githubUrl: "https://github.com/TodTete/VideoGame-Nave",
+    demoUrl: "https://www.youtube.com/watch?v=7OR6rqS60Ko",
+    highlight: true,
+  }
 ];
 
 // =====================
