@@ -67,7 +67,7 @@ const projects = [
     technologies: ["Python", "TeX", "Data Analysis"],
     githubUrl: "https://github.com/TodTete/Salud-Python",
     demoUrl: "https://youtu.be/4y8nAh_SkRM",
-  },
+  }
 ];
 
 // =====================
